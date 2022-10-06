@@ -190,29 +190,27 @@ const Root = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} >
-            <Route index element={(
-              <>
+            <Route 
+              index 
+              element={(
                 <LoginPage
                   onLogin={onLogin} 
                   statusLogin={statusLogin}
                 />
-              </>
               )} 
             />
 
             <Route
               path="register" 
-              element={
-                <>
-                  <RegisterPage
-                    setCurrentUserId={setCurrentUserId}
-                    usersData={usersData}
-                    setUser={setUser}
-                    setStatusLogin={setStatusLogin} 
-                    onRegisterUser={onRegisterUser}
-                  />
-                </>
-              } 
+              element={(
+                <RegisterPage
+                  setCurrentUserId={setCurrentUserId}
+                  usersData={usersData}
+                  setUser={setUser}
+                  setStatusLogin={setStatusLogin} 
+                  onRegisterUser={onRegisterUser}
+                />
+              )} 
             />
 
             <Route 
