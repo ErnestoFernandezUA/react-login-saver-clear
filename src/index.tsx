@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import { 
-  BrowserRouter, 
+  BrowserRouter as HashRouter, 
   Navigate, 
   Route, 
   Routes,
@@ -187,7 +187,7 @@ const Root = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />} >
             <Route 
@@ -238,7 +238,7 @@ const Root = () => {
             <Route path="*" element={<p>Page not found but WORK!!!!</p>} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
