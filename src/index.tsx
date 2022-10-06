@@ -237,7 +237,7 @@ const Root = () => {
               }
             />
 
-            <Route path="*" element={<p>Page not found</p>} />
+            <Route path="*" element={<p>Page not found but WORK!!!!</p>} />
           </Route>
         </Routes>
       </BrowserRouter>
