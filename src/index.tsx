@@ -190,7 +190,7 @@ const Root = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} >
-            <Route path="/"  element={(
+            <Route index element={(
               <>
                 <LoginPage
                   onLogin={onLogin} 
