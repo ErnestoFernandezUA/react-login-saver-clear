@@ -79,8 +79,6 @@ const Root = () => {
   };
 
   const onDeleteLogin = (deleteAccount: Account) => {
-    console.log(deleteAccount);
-
     if ((currentUserId >= 0) && user && (usersData.length > 0)) {
       console.log('delete');
 
@@ -128,15 +126,11 @@ const Root = () => {
       const newData = user.data;
       newData.push(account);
 
-      console.log(newData);
-
       const newUser = {
         ...user,
         data: newData,
       };
 
-      console.log(newUser);
-    
       const newUsersData = usersData;
       newUsersData[currentUserId] = newUser;
 
@@ -156,8 +150,6 @@ const Root = () => {
         data: newData,
       };
 
-      console.log(newUser);
-    
       const newUsersData = usersData;
       newUsersData[currentUserId] = newUser;
 
@@ -168,12 +160,8 @@ const Root = () => {
   };
 
   const onDeleteUser = () => {
-    console.log('delete currentUserId = ', currentUserId);
-
     if ((currentUserId >= 0) && user && (usersData.length > 0)) {
       const newUsersData = usersData.filter(user => user.userId !== currentUserId);
-
-      console.log('newUsersData = ', newUsersData);
 
       setUsersData(newUsersData);
       setUser(null);
@@ -181,6 +169,10 @@ const Root = () => {
       setStatusLogin(false);
       localStorage.setItem('localUsersData', JSON.stringify(usersData));
     };
+  };
+
+  const onClearUsersData = (event: React.MouseEvent) => {
+    localStorage.setItem('localUsersData', JSON.stringify(initialUsersData));
   };
 
   return (
@@ -194,6 +186,7 @@ const Root = () => {
                 onLogin={onLogin} 
                 statusLogin={statusLogin}
                 usersData={usersData}
+                onClearUsersData={onClearUsersData}
               />
             )} 
           />
