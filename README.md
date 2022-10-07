@@ -13,3 +13,9 @@ You can choose any DB or local storage.
 By default passwords should be hidden with "*", there should be an ability to reveal password (button, etc.).
 
 Stack to use: React, typescript
+
+
+- seytimeout navigate
+- убрать button reset
+- addlogin - rename
+- active change button

@@ -90,7 +90,6 @@ export const Login: React.FC<Props> = React.memo(({
             <button
               className="button is-primary"
               onClick={onStatusChange}
-              disabled={isPasswordHidden}
             >
               Change
             </button>
@@ -147,6 +146,13 @@ export const Login: React.FC<Props> = React.memo(({
               />
           </td>
           <td>
+            <button
+              className="button is-primary"
+              onClick={onStatusChange}
+              disabled
+            >
+              Change
+            </button>
           </td>
 
           <td>

@@ -32,14 +32,12 @@ export const UserDataPage: React.FC<Props> = ({
         <button
           className="button is-link"
           onClick={() => {
-            setTimeout(() => {
-              onLogout();
+            onLogout();
 
-              navigate('/');
-            }, 2000);
+            navigate('/');
           }}
         >
-          Exit
+          Log out
         </button>
       </div>
       <div className="message-body p-0 card">

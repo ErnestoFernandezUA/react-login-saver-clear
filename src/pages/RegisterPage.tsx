@@ -35,8 +35,23 @@ export const RegisterPage: React.FC<Props> = ({
     data: [],
   });
 
+  const [showErrorExistUser, setShowErrorExistUser] = useState(false);
+
+  const validateRegisterUser = (newUser: UserType) => {
+    if (usersData.find(user => user.login === newUser.login)) {
+      setShowErrorExistUser(true);
+
+      return false;
+    }
+
+    return true;
+  };
+
   const onInput = (event: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target;
+    if (name === 'login') {
+      setShowErrorExistUser(false);
+    };
 
     setInputRegisterUser({
       ...inputRegisterUser,
@@ -44,26 +59,23 @@ export const RegisterPage: React.FC<Props> = ({
     });
   };
 
-  const onSubmit = (event: React.FormEvent) => {
+  const onSubmitRegisterForm = (event: React.FormEvent) => {
     event.preventDefault();
-
-    onRegisterUser(inputRegisterUser);
-
-    setStatusLogin(true);
-    setUser(inputRegisterUser);
-    setCurrentUserId(usersData.length);
-
-    setTimeout(() => {
+    if (validateRegisterUser(inputRegisterUser)) {
+      onRegisterUser(inputRegisterUser);
+  
+      setStatusLogin(true);
+      setUser(inputRegisterUser);
+      setCurrentUserId(usersData.length);
+  
       navigate('/data');
-    }, 2000);
+    };
   };
 
   const onNavigateToLoginPage = (event: React.FormEvent) => {
     event.preventDefault();
 
-    setTimeout(() => {
-      navigate('/');
-    }, 500);
+    navigate('/');
   };
 
   return (
@@ -74,7 +86,10 @@ export const RegisterPage: React.FC<Props> = ({
         </div>
 
         <div className="message-body">
-        <form className="">
+        <form 
+          className=""
+          onSubmit={(event) => onSubmitRegisterForm(event) }
+        >
           <div className="field">
             <label className="label" htmlFor="login">Email</label>
             <div className="control">
@@ -87,6 +102,7 @@ export const RegisterPage: React.FC<Props> = ({
                 onChange={(event) => onInput(event)}
                 className="input" 
               />
+              {showErrorExistUser && <p>this user already exists!</p>}
             </div>
           </div>
 
@@ -106,7 +122,6 @@ export const RegisterPage: React.FC<Props> = ({
           <button 
             className="block button is-primary mb-4"
             type="submit"
-            onClick={onSubmit}
           >
             Create an account
           </button>

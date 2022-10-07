@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { TaskPopup } from '../components/TaskPopup';
+// import { TaskPopup } from '../components/TaskPopup';
 import classNames from 'classnames';
 import './LoginPage.scss';
 
@@ -9,21 +9,21 @@ type Props = {
   onLogin: (login: string, password: string, statusLogin: boolean) => void;
   statusLogin: boolean;
   usersData: UserType[] | [];
-  onClearUsersData: (event: React.MouseEvent) => void;
+  // onClearUsersData: (event: React.MouseEvent) => void;
 };
 
 export const LoginPage: React.FC<Props> = ({
   onLogin, 
   statusLogin, 
   usersData,
-  onClearUsersData,
+  // onClearUsersData,
 }) => {
   const navigate = useNavigate();
   const [inputUserLogin, setInputUserLogin] = useState<UserLogin>({ 
     login: '', 
     password: '',
   });
-  const [showTaskPopup, setShowTaskPopup] = useState(false);
+  // const [showTaskPopup, setShowTaskPopup] = useState(false);
 
   const [showErrorInputLogin, setShowErrorInputLogin] = useState(false);
   const [showErrorInputPassword, setShowErrorInputPassword] = useState(false);
@@ -56,19 +56,13 @@ export const LoginPage: React.FC<Props> = ({
       onLogin(inputUserLogin.login, inputUserLogin.password, statusLogin);
     }
 
-    if (statusLogin) {
-      setTimeout(() => {
-        navigate('data');
-      }, 2000);
-    };
+    
   };
 
   const onNavigateToRegisterPage = (event: React.FormEvent) => {
     event.preventDefault();
 
-    setTimeout(() => {
-      navigate('register');
-    }, 500);
+    navigate('register');
   };
 
   const isValidUser = (login: string, password: string) => {
@@ -102,34 +96,35 @@ export const LoginPage: React.FC<Props> = ({
     return false;
   };
 
-  const onShowTaskPopup = (event: React.MouseEvent) => {
-    setShowTaskPopup(!showTaskPopup);
-  };
+  // const onShowTaskPopup = (event: React.MouseEvent) => {
+  //   setShowTaskPopup(!showTaskPopup);
+  // };
 
   return (
     <div className="login-form">
       <article className="message is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-half-fullhd">
         <div className="message-header  ">
           <p className="mr-5">Login Page</p>
-          <button
+          {/* <button
             type="button"
             className="button is-link is-vcentered mr-2"
             onClick={(event) => onShowTaskPopup(event)}
           >
             Task info
-          </button>
-          <button
+          </button> */}
+          {/* <button
             type="button"
             className="button is-danger is-vcentered"
             onClick={(event) => onClearUsersData(event)}
           >
             Reset data
-          </button>
+          </button> */}
         </div>
         <div className="message-body">
           <form 
             action="" 
             className="field"
+            onSubmit={(event) => onSubmit(event)}
           >
             <div className="block">
               <label className="label" htmlFor="login">Email</label>
@@ -169,7 +164,6 @@ export const LoginPage: React.FC<Props> = ({
               <button
                 type="submit"
                 className="button is-primary block mb-2"
-                onClick={onSubmit}
                 disabled={showErrorInputLogin || showErrorInputPassword || showErrorNotExistUser || showErrorPasswordIncorrect}
               >
                 Login
@@ -189,10 +183,10 @@ export const LoginPage: React.FC<Props> = ({
         </div>
       </article>
 
-      {showTaskPopup && (
+      {/* {showTaskPopup && (
         <TaskPopup 
           onShowTaskPopup={onShowTaskPopup}
-        />)}
+        />)} */}
     </div>
   );
 };
