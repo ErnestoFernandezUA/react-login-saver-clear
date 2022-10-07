@@ -178,7 +178,7 @@ export const LoginPage: React.FC<Props> = ({
               <br />
               <button
                 type="button"
-                className="button is-primary block mb-5"
+                className="button is-primary block mb-0"
                 onClick={(event) => onNavigateToRegisterPage(event)}
               >
                 Register new user
