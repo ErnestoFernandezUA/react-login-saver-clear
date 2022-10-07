@@ -104,7 +104,7 @@ export const RegisterPage: React.FC<Props> = ({
           </div>
 
           <button 
-            className="block button is-primary"
+            className="block button is-primary mb-4"
             type="submit"
             onClick={onSubmit}
           >
