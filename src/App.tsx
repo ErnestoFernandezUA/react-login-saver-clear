@@ -10,7 +10,7 @@ export const App = () => {
       <div className="body hero is-fullheight">
         {/* <MainNav /> */}
 
-        <div className="section">
+        <div className="section is-centered">
           <Outlet />
         </div>
       </div>

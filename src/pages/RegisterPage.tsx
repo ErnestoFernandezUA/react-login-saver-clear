@@ -121,8 +121,6 @@ export const RegisterPage: React.FC<Props> = ({
         </form>
         </div>
       </article>
-
-      
     </div>
   );
 };
