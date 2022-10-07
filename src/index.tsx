@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import { 
@@ -13,8 +13,6 @@ import {
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { UserDataPage } from "./pages/UserDataPage";
-import 'bulma/css/bulma.css';
-import '@fortawesome/fontawesome-free/css/all.css';
 import './index.css';
 
 const initialUser = {
@@ -186,60 +184,59 @@ const Root = () => {
   };
 
   return (
-    <>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<App />} >
-            <Route 
-              index 
-              element={(
-                <LoginPage
-                  onLogin={onLogin} 
-                  statusLogin={statusLogin}
-                />
-              )} 
-            />
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />} >
+          <Route 
+            index 
+            element={(
+              <LoginPage
+                onLogin={onLogin} 
+                statusLogin={statusLogin}
+                usersData={usersData}
+              />
+            )} 
+          />
 
-            <Route
-              path="register" 
-              element={(
-                <RegisterPage
-                  setCurrentUserId={setCurrentUserId}
-                  usersData={usersData}
-                  setUser={setUser}
-                  setStatusLogin={setStatusLogin} 
-                  onRegisterUser={onRegisterUser}
-                />
-              )} 
-            />
+          <Route
+            path="register" 
+            element={(
+              <RegisterPage
+                setCurrentUserId={setCurrentUserId}
+                usersData={usersData}
+                setUser={setUser}
+                setStatusLogin={setStatusLogin} 
+                onRegisterUser={onRegisterUser}
+              />
+            )} 
+          />
 
-            <Route 
-              path="data"
-              element={
-                statusLogin ? (
-                  <>
-                    <UserDataPage 
-                      onLogout={onLogout}
-                      user={user}
-                      currentUserId={currentUserId}
-                      onDeleteLogin={onDeleteLogin}
-                      onSaveAccount={onSaveAccount}
-                      onAddLogin={onAddLogin}
-                      onClearUserData={onClearUserData}
-                      onDeleteUser={onDeleteUser}
-                    /> 
-                  </>
-                ) : (
-                  <Navigate to="/" replace />
-                )
-              }
-            />
+          <Route 
+            path="data"
+            element={
+              statusLogin ? (
+                <>
+                  <UserDataPage 
+                    onLogout={onLogout}
+                    user={user}
+                    currentUserId={currentUserId}
+                    onDeleteLogin={onDeleteLogin}
+                    onSaveAccount={onSaveAccount}
+                    onAddLogin={onAddLogin}
+                    onClearUserData={onClearUserData}
+                    onDeleteUser={onDeleteUser}
+                  /> 
+                </>
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
 
-            <Route path="*" element={<p>Page not found but WORK!!!!</p>} />
-          </Route>
-        </Routes>
-      </HashRouter>
-    </>
+          <Route path="*" element={<p>Page not found</p>} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 };
 

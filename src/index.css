@@ -1,3 +1,12 @@
+.body {
+  background-image: url('https://images.hdqwalls.com/download/big-sur-apple-5k-78-3840x2400.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 50% 50%;
+  width: 100vw;
+  height: 100vh;
+}
+
 iframe {
   display: none;
 }
