@@ -29,6 +29,7 @@ export const UserDataPage: React.FC<Props> = ({
     <article className="message">
       <div className="message-header  ">
         <p>Data Page</p>
+        
         <button
           className="button is-link"
           onClick={() => {

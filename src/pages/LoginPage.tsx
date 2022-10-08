@@ -84,10 +84,10 @@ export const LoginPage: React.FC<Props> = ({
   };
 
   return (
-    <div className="login-form">
-      <article className="message is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-half-fullhd">
+    <div className="login-form columns">
+      <article className="message column is-4 p-0">
         <div className="message-header  ">
-          <p className="mr-5">Login Page</p>
+          <p className="ml-2">Password Manager</p>
         </div>
         <div className="message-body">
           <form 

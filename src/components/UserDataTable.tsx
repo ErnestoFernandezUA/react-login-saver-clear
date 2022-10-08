@@ -34,12 +34,12 @@ export const UserDataTable: React.FC<Props> = ({
     <>
       <table className="table is-striped is-fullwidth card">
         <thead className="thead">
-          <tr className="">
-            <th className="is-vcentered is-one-third">Source</th>
-            <th className="is-vcentered is-one-third">Login</th>
-            <th className="is-vcentered is-one-third">Password</th>
-            <th className="is-vcentered"></th>
-            <th className="is-vcentered">
+          <tr className="is-full">
+            <th className="is-vcentered ">Source</th>
+            <th className="is-vcentered ">Login</th>
+            <th className="is-vcentered ">Password</th>
+            <th className="is-vcentered "></th>
+            <th className="is-vcentered ">
               <button 
                 className="button is-danger"
                 onClick={onClearUserData}
@@ -47,7 +47,7 @@ export const UserDataTable: React.FC<Props> = ({
                 Clear Data
               </button>
             </th>
-            <th className="is-vcentered">
+            <th className="is-vcentered ">
               <button 
                 className="button is-danger"
                 onClick={onDeleteUserHandler}

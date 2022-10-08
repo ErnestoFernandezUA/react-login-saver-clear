@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useState } from 'react';
 import './RegisterPage.scss';
+import classNames from 'classnames';
 
 type Props = {
   setCurrentUserId: (index: number) => void;
@@ -93,10 +94,10 @@ export const RegisterPage: React.FC<Props> = ({
   };
 
   return (
-    <div className="register-form">
-      <article className="message is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-half-fullhd">
-        <div className="message-header  ">
-          <p>Register Page</p>
+    <div className="register-form columns">
+      <article className="message column is-4 p-0">
+        <div className="message-header">
+        <p className="ml-2">Password Manager</p>
         </div>
 
         <div className="message-body">
@@ -114,7 +115,9 @@ export const RegisterPage: React.FC<Props> = ({
                 placeholder="e.g. tolyan@example.com"
                 value={inputRegisterUser.login}
                 onChange={(event) => onInput(event)}
-                className="input" 
+                className={classNames("input",
+                {'is-danger' : showErrorIncorrectLogin || showErrorExistUser}
+                )} 
               />
               {showErrorIncorrectLogin && <p>login is required</p>}
               {showErrorExistUser && <p>this user already exists!</p>}
@@ -125,12 +128,14 @@ export const RegisterPage: React.FC<Props> = ({
             <label className="label" htmlFor="password">Password</label>
             <input 
               id="password"
-              className="input" 
               type="password" 
               placeholder="********"
               name="password"
               value={inputRegisterUser.password}
               onChange={(event) => onInput(event)}
+              className={classNames("input",
+              {'is-danger' : showErrorIncorrectPassword}
+              )} 
             />
             {showErrorIncorrectPassword && <p>password is required</p>}
           </div>
