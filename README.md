@@ -1,6 +1,6 @@
 # PASSWORD MANAGER
 
-[DEMO](https://ernestofernandezua.github.io/react-login-saver-clear/)
+[DEMO](https://ernestofernandezua.github.io/react-password-manager/)
 
 ## Description
 
