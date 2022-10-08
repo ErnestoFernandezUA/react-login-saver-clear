@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { 
   AppBase, 
-} from './App_';
+} from './AppBase';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { UserDataPage } from "./pages/UserDataPage";
@@ -29,10 +29,7 @@ const initialUsersData = [initialUser];
 const localUsersData = JSON.parse(`${localStorage.getItem('localUsersData')}`);
 
 if (!localUsersData) {
-  console.log('localUsersData NOT exist');
   localStorage.setItem('localUsersData', JSON.stringify(initialUsersData));
-} else {
-  console.log('localUsersData exist');
 }
 
 console.log(localUsersData);
@@ -53,17 +50,12 @@ export const App = () => {
       const currentUser = usersData.find(user => user.login === login && user.password === password);
   
       if(currentUser) {
-        console.log('this user exist!');
-  
         setStatusLogin(true);
         setUser(currentUser);
 
         setCurrentUserId(usersData.findIndex(user => user.login === login && user.password === password));
 
         navigate('data');
-      } else {
-        // eslint-disable-next-line no-console
-        console.log('this user is not exist!');
       }
     };
   };
@@ -82,8 +74,6 @@ export const App = () => {
 
   const onDeleteLogin = (deleteAccount: Account) => {
     if ((currentUserId >= 0) && user && (usersData.length > 0)) {
-      console.log('delete');
-
       const newData = user.data.filter(account => account.accountId !== deleteAccount.accountId);
 
       const newUser = {

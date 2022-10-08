@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useState } from 'react';
 import './RegisterPage.scss';
 
@@ -35,9 +35,24 @@ export const RegisterPage: React.FC<Props> = ({
     data: [],
   });
 
+  const [showErrorIncorrectLogin, setShowErrorIncorrectLogin] = useState(false);
+  const [showErrorIncorrectPassword, setShowErrorIncorrectPassword] = useState(false);
   const [showErrorExistUser, setShowErrorExistUser] = useState(false);
 
   const validateRegisterUser = (newUser: UserType) => {
+    if (!newUser.login || !newUser.password) {
+      if (!newUser.login) {
+        setShowErrorIncorrectLogin(true);
+      };
+  
+      if (!newUser.password) {
+        setShowErrorIncorrectPassword(true);
+      };
+      
+      return false;
+    };
+
+
     if (usersData.find(user => user.login === newUser.login)) {
       setShowErrorExistUser(true);
 
@@ -51,6 +66,11 @@ export const RegisterPage: React.FC<Props> = ({
     const {name, value} = event.target;
     if (name === 'login') {
       setShowErrorExistUser(false);
+      setShowErrorIncorrectLogin(false);
+    };
+
+    if (name === 'password') {
+      setShowErrorIncorrectPassword(false);
     };
 
     setInputRegisterUser({
@@ -70,12 +90,6 @@ export const RegisterPage: React.FC<Props> = ({
   
       navigate('/data');
     };
-  };
-
-  const onNavigateToLoginPage = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    navigate('/');
   };
 
   return (
@@ -102,6 +116,7 @@ export const RegisterPage: React.FC<Props> = ({
                 onChange={(event) => onInput(event)}
                 className="input" 
               />
+              {showErrorIncorrectLogin && <p>login is required</p>}
               {showErrorExistUser && <p>this user already exists!</p>}
             </div>
           </div>
@@ -117,22 +132,19 @@ export const RegisterPage: React.FC<Props> = ({
               value={inputRegisterUser.password}
               onChange={(event) => onInput(event)}
             />
+            {showErrorIncorrectPassword && <p>password is required</p>}
           </div>
 
           <button 
-            className="block button is-primary mb-4"
+            className="block button is-primary mb-2 is-fullwidth"
             type="submit"
           >
             Create an account
           </button>
-          <br />
-          <button 
-            className="block button is-primary"
-            type="button"
-            onClick={(event) => onNavigateToLoginPage(event)}
-          >
-            to LoginPage
-          </button>
+
+          <NavLink to={'/'}>
+            <p>Back to Login</p>
+          </NavLink>
         </form>
         </div>
       </article>

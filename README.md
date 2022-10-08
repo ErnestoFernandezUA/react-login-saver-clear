@@ -4,7 +4,7 @@
 
 ## Description
 
-"Password manager" app to manage all your passwords for different accounts (mails, devices, accounts, servers, etc.).
+app to manage all your passwords for different accounts (mails, devices, accounts, servers, etc.).
 
 - App has at least 3 pages: `login`, `register`, `dashboard` (main logged in view).
 - User can to add/edit/delete/reveal passwords on the dashboard after login.

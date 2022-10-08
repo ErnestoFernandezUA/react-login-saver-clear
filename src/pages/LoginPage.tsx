@@ -1,7 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-// import { TaskPopup } from '../components/TaskPopup';
 import classNames from 'classnames';
 import './LoginPage.scss';
 
@@ -9,21 +8,17 @@ type Props = {
   onLogin: (login: string, password: string, statusLogin: boolean) => void;
   statusLogin: boolean;
   usersData: UserType[] | [];
-  // onClearUsersData: (event: React.MouseEvent) => void;
 };
 
 export const LoginPage: React.FC<Props> = ({
   onLogin, 
   statusLogin, 
   usersData,
-  // onClearUsersData,
 }) => {
-  const navigate = useNavigate();
   const [inputUserLogin, setInputUserLogin] = useState<UserLogin>({ 
     login: '', 
     password: '',
   });
-  // const [showTaskPopup, setShowTaskPopup] = useState(false);
 
   const [showErrorInputLogin, setShowErrorInputLogin] = useState(false);
   const [showErrorInputPassword, setShowErrorInputPassword] = useState(false);
@@ -55,14 +50,6 @@ export const LoginPage: React.FC<Props> = ({
     if (isValidUser(inputUserLogin.login, inputUserLogin.password)) {
       onLogin(inputUserLogin.login, inputUserLogin.password, statusLogin);
     }
-
-    
-  };
-
-  const onNavigateToRegisterPage = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    navigate('register');
   };
 
   const isValidUser = (login: string, password: string) => {
@@ -96,29 +83,11 @@ export const LoginPage: React.FC<Props> = ({
     return false;
   };
 
-  // const onShowTaskPopup = (event: React.MouseEvent) => {
-  //   setShowTaskPopup(!showTaskPopup);
-  // };
-
   return (
     <div className="login-form">
       <article className="message is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-half-fullhd">
         <div className="message-header  ">
           <p className="mr-5">Login Page</p>
-          {/* <button
-            type="button"
-            className="button is-link is-vcentered mr-2"
-            onClick={(event) => onShowTaskPopup(event)}
-          >
-            Task info
-          </button> */}
-          {/* <button
-            type="button"
-            className="button is-danger is-vcentered"
-            onClick={(event) => onClearUsersData(event)}
-          >
-            Reset data
-          </button> */}
         </div>
         <div className="message-body">
           <form 
@@ -152,41 +121,29 @@ export const LoginPage: React.FC<Props> = ({
                   placeholder="********"
                   value={inputUserLogin.password}
                   onChange={(event) => onInput(event)}
-                  className={classNames("input",
+                  className={classNames('input',
                   {'is-danger' : showErrorInputPassword || showErrorPasswordIncorrect}
                   )}
                 />
                 {showErrorInputPassword && <p>Password is incorrect</p>}
                 {!showErrorInputPassword && showErrorPasswordIncorrect && <p>Password is wrong!</p>}
             </div>
-            <br />
             <div className="block">
               <button
                 type="submit"
-                className="button is-primary block mb-2"
+                className="button is-primary mb-2 is-fullwidth"
                 disabled={showErrorInputLogin || showErrorInputPassword || showErrorNotExistUser || showErrorPasswordIncorrect}
               >
                 Login
               </button>
               
-              <br />
-              <button
-                type="button"
-                className="button is-primary block mb-0"
-                onClick={(event) => onNavigateToRegisterPage(event)}
-              >
-                Register new user
-              </button>
-              <br />
+              <NavLink to={'/register'}>
+                <p>Don&#39;t have an account? Sign Up</p>
+              </NavLink>
             </div>
           </form>
         </div>
       </article>
-
-      {/* {showTaskPopup && (
-        <TaskPopup 
-          onShowTaskPopup={onShowTaskPopup}
-        />)} */}
     </div>
   );
 };
