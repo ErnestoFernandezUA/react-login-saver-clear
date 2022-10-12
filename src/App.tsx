@@ -194,18 +194,16 @@ export const App = () => {
           path="data"
           element={
             statusLogin ? (
-              <>
-                <UserDataPage 
-                  onLogout={onLogout}
-                  user={user}
-                  currentUserId={currentUserId}
-                  onDeleteLogin={onDeleteLogin}
-                  onSaveAccount={onSaveAccount}
-                  onAddLogin={onAddLogin}
-                  onClearUserData={onClearUserData}
-                  onDeleteUser={onDeleteUser}
-                /> 
-              </>
+              <UserDataPage 
+                onLogout={onLogout}
+                user={user}
+                currentUserId={currentUserId}
+                onDeleteLogin={onDeleteLogin}
+                onSaveAccount={onSaveAccount}
+                onAddLogin={onAddLogin}
+                onClearUserData={onClearUserData}
+                onDeleteUser={onDeleteUser}
+              /> 
             ) : (
               <Navigate to="/" replace />
             )
