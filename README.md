@@ -13,4 +13,3 @@ app to manage all your passwords for different accounts (mails, devices, account
 
 ## Stack to use: 
 React, Typescript
-q
