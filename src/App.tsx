@@ -169,19 +169,11 @@ export const App = () => {
         <Route 
           index 
           element={(
-            <>
-              <LoginPage
-                onLogin={onLogin} 
-                statusLogin={statusLogin}
-                usersData={usersData}
-              />
-              <button
-                type="button"
-                onClick={() => localStorage.setItem('localUsersData', JSON.stringify(initialUsersData))}
-              >
-                clear
-              </button>
-            </>
+            <LoginPage
+              onLogin={onLogin} 
+              statusLogin={statusLogin}
+              usersData={usersData}
+            />
           )} 
         />
 
